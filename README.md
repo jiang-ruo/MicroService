@@ -26,7 +26,7 @@
 
 supported:
 
-(jetbrains-logos/jetbrains.png)
+[![JETBRAINS](jetbrains-logos/jetbrains.png)](https://www.jetbrains.com)
 
 
 
