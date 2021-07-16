@@ -69,7 +69,7 @@ pid-file=/home/ms/services/mysql/8.0/data/mysql.pid
 [services/mysql/8.0/support-files]$ cd ..
 # 初始化mysql
 # bin/mysqld --defaults-file=[配置文件] --initialize --user=[用户名]
-[services/mysql/8.0]$ bin/mysqld --defaults-file=my.cnf --initialize --user=lxj
+[services/mysql/8.0]$ bin/mysqld --defaults-file=my.cnf --initialize --user=[linux用户名]
 # 启动
 [services/mysql/8.0]$ support-files/mysql.server start
 ```
