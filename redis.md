@@ -9,7 +9,7 @@
 # 使用指定配置文件启动redis
 [services/redis/6.2]$ ./src/redis-server [file]
 # 后台启动，日志输出到log文件
-[services/redis/6.2]$ nohup ./src/redis-server > log/redis.log &
+[services/redis/6.2]$ nohup ./src/redis-server >> log/redis.log &
 # 关闭redis
 [services/redis/6.2]$  ./src/redis-cli shutdown
 
@@ -24,6 +24,27 @@
 
 https://blog.csdn.net/liqingtx/article/details/60330555
 ```
+
+```shell
+redis.conf
+
+# 配置密码
+requirepass redis123456
+# 关闭保护模式，使可以远程连接
+protected-mode no
+# 注释ip绑定
+bind 127.0.0.1 -::1
+```
+
+```shell
+# 貌似不指定配置文件redis不会采用redis.conf启动，需要手动指定
+# 指定配置文件启动redis
+$ redis-server [file] >> [log]
+# 设置密码后关闭redis
+$ redis-cli -a [password] shutdown
+```
+
+
 
 ```shell
 # 创建软链接

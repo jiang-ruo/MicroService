@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+xlo.ms.redis.RedisConfig,\
+xlo.ms.redis.DefaultRedisUtil

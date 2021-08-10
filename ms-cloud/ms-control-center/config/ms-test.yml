@@ -1,0 +1,26 @@
+server:
+  port: 80
+
+eureka:
+  instance:
+    #    每隔一定时间发送一次心跳
+    lease-renewal-interval-in-seconds: 3
+    #    告知服务端一定时间还未收到心跳，就移除该服务
+    lease-expiration-duration-in-seconds: 5
+  client:
+    #    注册地址
+    service-url:
+      defaultZone: http://localhost:6662/eureka
+#      ?????不知道为什么客户端配置健康检测会报错，但是健康检测在client下
+#    #    开启健康检测
+#    healthcheck:
+#      enabled: true
+    #      客户端获取eureka中注册应用列表的时长
+    registry-fetch-interval-seconds: 5
+
+spring:
+  main:
+#    因为springBoot和springCloud冲突(https://blog.csdn.net/u010638673/article/details/90052019)?表示怀疑
+#    使用该配置避免ms-redis重复构造RedisTemplate报错
+#    允许ApplicationContext中覆盖重复出现的Bean
+    allow-bean-definition-overriding: true

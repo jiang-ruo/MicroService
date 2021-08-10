@@ -1,0 +1,6 @@
+spring:
+  application:
+    #    这边的名字需要与配置文件的名字相同
+    name: ms-test
+  config:
+    import: optional:configserver:http://localhost:6662/config
