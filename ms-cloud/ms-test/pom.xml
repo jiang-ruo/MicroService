@@ -29,10 +29,10 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+<!--		ms-redis测试-->
 		<dependency>
 			<groupId>xlo.ms</groupId>
 			<artifactId>ms-redis</artifactId>
-			<version>${ms.version}</version>
 		</dependency>
 	</dependencies>
 

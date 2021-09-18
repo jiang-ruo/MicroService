@@ -61,6 +61,7 @@
 				<version>3.0.0-M5</version>
 				<configuration>
 					<!--					打包时跳过测试-->
+
 					<skipTests>true</skipTests>
 					<!--&lt;!&ndash;				跳过测试编译错误&ndash;&gt;-->
 					<!--					<testFailureIgnore>true</testFailureIgnore>-->
@@ -68,4 +69,8 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<profiles>
+<!--		https://blog.csdn.net/java_collect/article/details/83870215-->
+	</profiles>
 </project>

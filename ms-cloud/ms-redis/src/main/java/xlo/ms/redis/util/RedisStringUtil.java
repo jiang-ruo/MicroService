@@ -13,7 +13,7 @@ public interface RedisStringUtil {
 	 * @param key
 	 * @return
 	 */
-	Object get(String key);
+	Object get(Object key);
 
 	/**
 	 * 存入缓存
@@ -21,7 +21,7 @@ public interface RedisStringUtil {
 	 * @param value
 	 * @return
 	 */
-	boolean set(String key, Object value);
+	boolean set(Object key, Object value);
 
 	/**
 	 * 存入缓存
@@ -30,14 +30,14 @@ public interface RedisStringUtil {
 	 * @param time
 	 * @return
 	 */
-	boolean set(String key, Object value, long time);
+	boolean set(Object key, Object value, long time);
 
 	/**
 	 * 计数器
 	 * @param key 存在则值+1，不存在则初始化后+1
 	 * @return 当前的值
 	 */
-	Long increment(String key);
+	Long increment(Object key);
 
 	/**
 	 * 计数器
@@ -45,6 +45,6 @@ public interface RedisStringUtil {
 	 * @param step
 	 * @return 当前的值
 	 */
-	Long increment(String key, long step);
+	Long increment(Object key, long step);
 
 }

@@ -12,6 +12,7 @@
 		<module>ms-control-center</module>
 		<module>ms-test</module>
 		<module>ms-redis</module>
+		<module>ms-common</module>
 	</modules>
 
 	<parent>
@@ -35,12 +36,18 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+			<dependency>
+				<groupId>xlo.ms</groupId>
+				<artifactId>ms-redis</artifactId>
+				<version>${ms.version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
 	<build>
 		<plugins>
 <!--		统一修改所有子模块的版本号	-->
+<!--			versions:set -DnewVersion=0.1.0 -f pom.xml-->
 <!--		https://www.itgrocery.cn/posts/40d1f839/	-->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>

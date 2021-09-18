@@ -14,7 +14,6 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.*;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
-import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 /**
  * @author XiaoLOrange
@@ -79,8 +78,8 @@ public class RedisConfig {
 	 * @return
 	 */
 	@Bean
-	public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory factory){
-		RedisTemplate<String, Object> template = new RedisTemplate<>();
+	public RedisTemplate<Object, Object> redisTemplate(RedisConnectionFactory factory){
+		RedisTemplate<Object, Object> template = new RedisTemplate<>();
 		template.setConnectionFactory(factory);
 		// 因为jdk序列化的缺点：1、需要实现Serializable接口，
 		//					 2、序列化后为二进制数据，无法转为多个不同的类
@@ -95,9 +94,12 @@ public class RedisConfig {
 		jackson.setObjectMapper(om);
 
 		// key和hash key采用StringRedisSerializer序列化
-		StringRedisSerializer srs = new StringRedisSerializer();
-		template.setKeySerializer(srs);
-		template.setHashKeySerializer(srs);
+//		StringRedisSerializer srs = new StringRedisSerializer();
+//		template.setKeySerializer(srs);
+//		template.setHashKeySerializer(srs);
+		// 不知道网上为什么都选择key为String类型
+		template.setKeySerializer(jackson);
+		template.setHashKeySerializer(jackson);
 		// value和hash value采用json序列化
 		template.setValueSerializer(jackson);
 		template.setHashValueSerializer(jackson);
@@ -112,7 +114,7 @@ public class RedisConfig {
 	 * @return
 	 */
 	@Bean
-	public ValueOperations<String, Object> valueOperations(@Qualifier("redisTemplate") RedisTemplate rt){
+	public ValueOperations valueOperations(@Qualifier("redisTemplate") RedisTemplate rt){
 		return rt.opsForValue();
 	}
 

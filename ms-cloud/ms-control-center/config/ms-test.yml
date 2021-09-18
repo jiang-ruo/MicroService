@@ -1,6 +1,11 @@
 server:
   port: 80
 
+
+
+#
+# 以下内容所有子模块统一这么配置，以后探索统一引入相同配置的方法
+#
 eureka:
   instance:
     #    每隔一定时间发送一次心跳
@@ -24,3 +29,8 @@ spring:
 #    使用该配置避免ms-redis重复构造RedisTemplate报错
 #    允许ApplicationContext中覆盖重复出现的Bean
     allow-bean-definition-overriding: true
+
+# 自定义，这些key所有微服务统一
+redis:
+  keys:
+    session: session

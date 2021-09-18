@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import xlo.ms.redis.RedisUtil;
+import xlo.ms.test.bean.RedisTestBean;
 
 /**
  * @author XiaoLOrange
@@ -12,19 +13,23 @@ import xlo.ms.redis.RedisUtil;
  */
 
 @RestController
-public class TestController {
+@RequestMapping("redis")
+public class RedisTestController {
 
 	@Autowired
 	private RedisUtil ru;
 
-	@RequestMapping("/")
+	@RequestMapping("1")
 	public boolean tc(){
 //		ru.set("aaa", "sdfsdf");
-		ru.Transaction(() -> {
-			ru.set("aaa", "xc");
-			return null;
-		});
-		System.out.println(ru.get("aaa"));
+		RedisTestBean rtb = new RedisTestBean();
+		rtb.setRedisInt(20);
+		// 事务
+//		ru.Transaction(() -> {
+//			ru.set(rtb, "xc");
+//			return null;
+//		});
+		System.out.println(ru.get(rtb));
 		return true;
 	}
 
